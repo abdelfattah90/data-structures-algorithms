@@ -84,8 +84,8 @@ class OurArray
         if (index < 0) return default(T)!;
 
         ref byte zeroAddress = ref MemoryMarshal.GetArrayDataReference((Array)source);
-        ref byte indexAddress = ref Unsafe.Add(ref zeroAddress, index * Unsafe.SizeOf<T>());
-        ref T item = ref Unsafe.As<byte, T>(ref indexAddress);
+        ref byte indexReference = ref Unsafe.Add(ref zeroAddress, index * Unsafe.SizeOf<T>());
+        ref T item = ref Unsafe.As<byte, T>(ref indexReference);
 
         return item;
     }
