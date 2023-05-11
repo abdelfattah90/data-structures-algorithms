@@ -1,5 +1,6 @@
 # Data Structures and Algorithms
 
-## Data Structures:
+### Data Structures:
 
 - Array
+- Linked List
