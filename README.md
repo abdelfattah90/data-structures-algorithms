@@ -4,4 +4,4 @@
 
 - Array
 - Linked List
-- Stack
+- Stack with Array and Linkedlist

@@ -1,22 +1,24 @@
-import LinkedList from '../linkedlist/linkedlist.js'
-
-class Stack {
+class StackArray {
   constructor(unique) {
-    this.dataList = new LinkedList(unique ?? false)
+    this.dataList = []
+    this.topIndex = -1
   }
 
   push(_data) {
-    this.dataList.insertFirst(_data)
+    this.dataList.push(_data)
+    this.topIndex++
   }
 
   pop() {
-    let headData = this.dataList.head.data
-    this.dataList.deleteHead()
+    if (this.topIndex == -1) return
+
+    let headData = this.dataList.splice(this.topIndex, 1)[0]
+    this.topIndex--
     return headData
   }
 
   peek() {
-    return this.dataList.head.data
+    return this.dataList[this.topIndex]
   }
 
   isEmpty() {
@@ -24,7 +26,11 @@ class Stack {
   }
 
   print() {
-    this.dataList.printList()
+    let printData = ''
+    for (let i = this.topIndex; i >= 0; i--) {
+      printData += this.dataList[i] + '->'
+    }
+    console.log(printData)
   }
 
   size() {
@@ -32,7 +38,7 @@ class Stack {
   }
 }
 
-let stack = new Stack()
+let stack = new StackArray()
 
 stack.push(11)
 stack.push(22)
@@ -51,4 +57,4 @@ while (!stack.isEmpty()) {
   stack.print()
 }
 
-export default Stack
+export default StackArray
