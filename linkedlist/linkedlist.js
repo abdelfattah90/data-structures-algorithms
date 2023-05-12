@@ -173,6 +173,29 @@ class LinkedList {
     node = null
     this.length--
   }
+
+  // INSERT FIRST --> STACK
+  insertFirst(_data) {
+    if (!this.ifCanInsert(_data)) return
+    let newNode = new LinkedListNode(_data)
+    if (this.head == null) {
+      this.head = newNode
+      this.tail = newNode
+    } else {
+      newNode.next = this.head
+      this.head = newNode
+    }
+
+    this.length++
+  }
+
+  // DELETE HEAD --> STACK
+  deleteHead() {
+    if (this.head == null) return
+    this.head = this.head.next
+
+    this.length--
+  }
 }
 
 let list = new LinkedList(true)
@@ -182,3 +205,5 @@ list.insertLast(3)
 list.insertLast(3)
 list.printList()
 console.log('Lenght: ', list.length)
+
+export default LinkedList
